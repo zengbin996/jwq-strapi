@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_photo_exif",
+  "info": {
+    "displayName": "exif",
+    "description": "相机 EXIF 信息"
+  },
+  "attributes": {
+    "camera_brand": {
+      "type": "string"
+    },
+    "camera_model": {
+      "type": "string"
+    },
+    "lens": {
+      "type": "string"
+    },
+    "focal_length": {
+      "type": "string"
+    },
+    "aperture": {
+      "type": "string"
+    },
+    "shutter_speed": {
+      "type": "string"
+    },
+    "iso": {
+      "type": "integer"
+    },
+    "width": {
+      "type": "integer"
+    },
+    "height": {
+      "type": "integer"
+    }
+  }
+}

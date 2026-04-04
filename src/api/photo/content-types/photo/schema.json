@@ -1,0 +1,94 @@
+{
+  "kind": "collectionType",
+  "collectionName": "photos",
+  "info": {
+    "singularName": "photo",
+    "pluralName": "photos",
+    "displayName": "Photo",
+    "description": "图片管理"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::photo-category.photo-category",
+      "inversedBy": "photos"
+    },
+    "tags": {
+      "type": "json"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["draft", "published", "hidden"],
+      "default": "published"
+    },
+    "taken_at": {
+      "type": "datetime"
+    },
+    "location_name": {
+      "type": "string"
+    },
+    "longitude": {
+      "type": "decimal"
+    },
+    "latitude": {
+      "type": "decimal"
+    },
+    "country": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "exif": {
+      "type": "component",
+      "repeatable": false,
+      "component": "photo-exif.exif"
+    },
+    "views": {
+      "type": "integer",
+      "default": 0
+    },
+    "likes": {
+      "type": "integer",
+      "default": 0
+    },
+    "downloads": {
+      "type": "integer",
+      "default": 0
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "uploader": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "is_private": {
+      "type": "boolean",
+      "default": false
+    },
+    "allow_download": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}
