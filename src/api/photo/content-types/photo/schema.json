@@ -5,90 +5,47 @@
     "singularName": "photo",
     "pluralName": "photos",
     "displayName": "Photo",
-    "description": "图片管理"
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
+  "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
-    "description": {
-      "type": "text"
-    },
-    "file": {
+    "image": {
       "type": "media",
       "multiple": false,
       "required": true,
       "allowedTypes": ["images"]
     },
-    "category": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::photo-category.photo-category",
-      "inversedBy": "photos"
-    },
-    "tags": {
-      "type": "json"
-    },
-    "status": {
-      "type": "enumeration",
-      "enum": ["draft", "published", "hidden"],
-      "default": "published"
-    },
-    "taken_at": {
+    "takenAt": {
       "type": "datetime"
     },
-    "location_name": {
-      "type": "string"
+    "description": {
+      "type": "text"
     },
-    "longitude": {
-      "type": "decimal"
-    },
-    "latitude": {
-      "type": "decimal"
-    },
-    "country": {
-      "type": "string"
-    },
-    "city": {
-      "type": "string"
-    },
-    "exif": {
-      "type": "component",
-      "repeatable": false,
-      "component": "photo-exif.exif"
-    },
-    "views": {
-      "type": "integer",
-      "default": 0
-    },
-    "likes": {
-      "type": "integer",
-      "default": 0
-    },
-    "downloads": {
-      "type": "integer",
-      "default": 0
-    },
-    "is_featured": {
+    "featured": {
       "type": "boolean",
       "default": false
     },
-    "uploader": {
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
+    "footprint": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "plugin::users-permissions.user"
+      "target": "api::footprint.footprint",
+      "inversedBy": "photos"
     },
-    "is_private": {
-      "type": "boolean",
-      "default": false
-    },
-    "allow_download": {
-      "type": "boolean",
-      "default": true
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "photos"
     }
   }
 }
