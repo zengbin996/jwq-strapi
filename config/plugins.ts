@@ -5,8 +5,9 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin =>
     config: {
       provider: 'aws-s3',
       providerOptions: {
+        baseUrl: `https://${env('TENCENT_BUCKET')}.cos.${env('TENCENT_REGION')}.myqcloud.com`,
         s3Options: {
-          forcePathStyle: false, // ⭐关键
+          forcePathStyle: false,
           useAccelerateEndpoint: false,
 
           credentials: {
@@ -16,7 +17,7 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin =>
 
           region: env('TENCENT_REGION'),
 
-          endpoint: `https://${env('TENCENT_BUCKET')}.cos.${env('TENCENT_REGION')}.myqcloud.com`,
+          endpoint: `https://cos.${env('TENCENT_REGION')}.myqcloud.com`,
 
           params: {
             Bucket: env('TENCENT_BUCKET'),
