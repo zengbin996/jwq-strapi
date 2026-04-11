@@ -9,11 +9,10 @@
     "deploy": "strapi deploy",
     "dev": "strapi develop",
     "develop": "strapi develop",
-    "seed:example": "node ./scripts/seed.js",
     "start": "strapi start",
     "strapi": "strapi",
-    "upgrade": "npx @strapi/upgrade latest",
-    "upgrade:dry": "npx @strapi/upgrade latest --dry"
+    "upgrade": "yarn dlx @strapi/upgrade latest",
+    "upgrade:dry": "yarn dlx @strapi/upgrade latest --dry"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "5.41.1",
@@ -33,11 +32,17 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "prettier": "^3.8.2",
     "typescript": "^5"
   },
   "engines": {
     "node": ">=20.0.0 <=24.x.x",
-    "npm": ">=6.0.0"
+    "yarn": ">=4.0.0"
+  },
+  "packageManager": "yarn@4.13.0",
+  "volta": {
+    "node": "24.14.1",
+    "yarn": "4.13.0"
   },
   "strapi": {
     "uuid": "281fa23e-7c3d-4c8e-a142-84b2d95b8a66",
