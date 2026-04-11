@@ -1,61 +1,98 @@
-# 🚀 Getting started with Strapi
+# jwq-strapi
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+个人网站后端服务，基于 [Strapi v5](https://strapi.io/) 构建，提供文章、相册、足迹等内容管理与 API 接口。
 
-### `develop`
+## 功能模块
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
+| 模块 | 说明 |
+|------|------|
+| **Article** | 文章，支持富文本、封面、标签、置顶、分类 |
+| **Article Category** | 文章分类，支持父子层级结构 |
+| **Photo** | 相册照片，支持分类、足迹关联、精选标记 |
+| **Category** | 相册分类，支持封面图 |
+| **Footprint** | 足迹（地图打卡），含经纬度、城市、关联照片 |
 
-```
-npm run develop
-# or
-yarn develop
-```
+文件存储使用腾讯云 COS。
 
-### `start`
+## 快速开始
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
+```bash
+# 安装依赖
+yarn install
 
-```
-npm run start
-# or
+# 开发模式（热重载）
+yarn dev
+
+# 生产构建
+yarn build
+
+# 生产启动
 yarn start
 ```
 
-### `build`
+## 接口文档
 
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
-
-```
-npm run build
-# or
-yarn build
-```
-
-## ⚙️ Deployment
-
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
+启动服务后访问自动生成的 Swagger 文档：
 
 ```
-yarn strapi deploy
+http://localhost:1337/documentation
 ```
 
-## 📚 Learn more
+文档由 `@strapi/plugin-documentation` 插件自动扫描所有 API 生成，无需手动维护。每次新增或修改 Content Type 后重启服务即可更新。
 
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
+### 接口规律
 
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
+所有接口遵循 Strapi REST 规范：
 
-## ✨ Community
+```
+GET    /api/articles               # 列表
+GET    /api/articles/:id           # 详情
+POST   /api/articles               # 创建
+PUT    /api/articles/:id           # 更新
+DELETE /api/articles/:id           # 删除
 
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+# 其他模块同理
+GET    /api/photos
+GET    /api/footprints
+GET    /api/categories
+GET    /api/article-categories
+```
 
----
+支持过滤、排序、分页、关联填充，例如：
 
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+```
+GET /api/articles?populate=category,cover
+GET /api/photos?filters[featured][$eq]=true&populate=categories,footprint
+GET /api/footprints?populate=photos,cover&sort=visitedAt:desc
+```
+
+详细查询语法参考 [Strapi REST API 文档](https://docs.strapi.io/dev-docs/api/rest)。
+
+## 环境变量
+
+复制 `.env.example` 为 `.env` 并填写以下配置：
+
+```env
+HOST=0.0.0.0
+PORT=1337
+APP_KEYS=
+API_TOKEN_SALT=
+ADMIN_JWT_SECRET=
+TRANSFER_TOKEN_SALT=
+JWT_SECRET=
+
+# 腾讯云 COS
+TENCENT_BUCKET=
+TENCENT_REGION=
+TENCENT_SECRET_ID=
+TENCENT_SECRET_KEY=
+
+# 数据库（默认 SQLite，生产建议换 PostgreSQL）
+DATABASE_CLIENT=sqlite
+# DATABASE_CLIENT=postgres
+# DATABASE_HOST=
+# DATABASE_PORT=5432
+# DATABASE_NAME=
+# DATABASE_USERNAME=
+# DATABASE_PASSWORD=
+```
