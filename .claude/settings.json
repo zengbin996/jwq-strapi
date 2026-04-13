@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(yarn install:*)"
+      "Bash(yarn install:*)",
+      "Bash(ls c:/Users/Nick/Desktop/WWW/MYSELF/jwq-strapi/*.zip)",
+      "Bash(git -C c:/Users/Nick/Desktop/WWW/MYSELF/jwq-strapi log --oneline --all -- \"*.zip\")"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\Nick\\Desktop\\WWW\\MYSELF\\jwq-strapi"
     ]
   }
 }

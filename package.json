@@ -11,8 +11,8 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "strapi": "strapi",
-    "upgrade": "yarn dlx @strapi/upgrade latest",
-    "upgrade:dry": "yarn dlx @strapi/upgrade latest --dry"
+    "upgrade": "npx @strapi/upgrade latest",
+    "upgrade:dry": "npx @strapi/upgrade latest --dry"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "5.41.1",
@@ -24,6 +24,7 @@
     "cos-nodejs-sdk-v5": "^2.15.4",
     "fs-extra": "^10.0.0",
     "mime-types": "^2.1.27",
+    "pg": "^8.20.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
@@ -37,13 +38,10 @@
     "typescript": "^5"
   },
   "engines": {
-    "node": ">=20.0.0 <=24.x.x",
-    "yarn": ">=4.0.0"
+    "node": ">=20.0.0 <=24.x.x"
   },
-  "packageManager": "yarn@4.13.0",
   "volta": {
-    "node": "24.14.1",
-    "yarn": "4.13.0"
+    "node": "24.14.1"
   },
   "strapi": {
     "uuid": "281fa23e-7c3d-4c8e-a142-84b2d95b8a66",
