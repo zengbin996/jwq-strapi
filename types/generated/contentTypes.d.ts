@@ -525,7 +525,7 @@ export interface ApiPhotoPhoto extends Struct.CollectionTypeSchema {
     description: Schema.Attribute.Text;
     featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     footprint: Schema.Attribute.Relation<'manyToOne', 'api::footprint.footprint'>;
-    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    image: Schema.Attribute.Media<'images', true> & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::photo.photo'> &
       Schema.Attribute.Private;
