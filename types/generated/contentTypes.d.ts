@@ -452,7 +452,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   collectionName: 'categories';
   info: {
     description: '';
-    displayName: 'Category';
+    displayName: 'Photo Category';
     pluralName: 'categories';
     singularName: 'category';
   };
