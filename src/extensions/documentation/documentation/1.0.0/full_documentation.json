@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2026-04-25T14:13:00.956Z"
+    "x-generation-date": "2026-04-28T09:54:01.110Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -8001,6 +8001,9 @@
                     "name": {
                       "type": "string"
                     },
+                    "coordinates": {
+                      "type": "string"
+                    },
                     "latitude": {
                       "type": "number",
                       "format": "float"
@@ -8749,13 +8752,14 @@
         "properties": {
           "data": {
             "required": [
-              "name",
-              "latitude",
-              "longitude"
+              "name"
             ],
             "type": "object",
             "properties": {
               "name": {
+                "type": "string"
+              },
+              "coordinates": {
                 "type": "string"
               },
               "latitude": {
@@ -8863,9 +8867,7 @@
       "Footprint": {
         "type": "object",
         "required": [
-          "name",
-          "latitude",
-          "longitude"
+          "name"
         ],
         "properties": {
           "id": {
@@ -8882,6 +8884,9 @@
             "type": "string"
           },
           "name": {
+            "type": "string"
+          },
+          "coordinates": {
             "type": "string"
           },
           "latitude": {
@@ -9941,6 +9946,9 @@
                       "type": "string"
                     },
                     "name": {
+                      "type": "string"
+                    },
+                    "coordinates": {
                       "type": "string"
                     },
                     "latitude": {
@@ -11671,6 +11679,9 @@
                 "type": "string"
               },
               "name": {
+                "type": "string"
+              },
+              "coordinates": {
                 "type": "string"
               },
               "latitude": {

@@ -121,6 +121,10 @@ coverage
 # Strapi
 ############################
 
+# Auto-generated files
+types/generated/
+src/extensions/documentation/documentation/
+
 .env
 license.txt
 exports

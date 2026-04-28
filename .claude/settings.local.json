@@ -2,7 +2,14 @@
   "permissions": {
     "allow": [
       "Bash(xargs grep *)",
-      "Bash(grep -E '\\\\.\\(css|scss|less|style\\)$')"
+      "Bash(grep -E '\\\\.\\(css|scss|less|style\\)$')",
+      "Bash(node scripts/import-footprints.mjs)",
+      "Bash(curl -s http://127.0.0.1:1337/api/footprints -H \"Authorization: Bearer ed74aa938647c6db84d2abc18750665c8ddcdd49223261f29f7f9dad140acdb358c0021ba85159e0e4d1cba9ff1400beac34182fa99668cbbd2b052317affd7de777807503ad6fee5c56a718b8e1b1a24b8d355db58f3f27d2706fc6eef33f090f79e2793448f9a6468344fdf17a325234e8114bbb9a1aa595eb6cf5ce7377ad\")",
+      "Bash(curl -v http://127.0.0.1:1337/api/footprints)",
+      "Bash(netstat -ano)",
+      "Bash(NO_PROXY=\"*\" http_proxy=\"\" HTTP_PROXY=\"\" node scripts/import-footprints.mjs)",
+      "Bash(cmd /c \"set http_proxy=& set HTTP_PROXY=& set https_proxy=& set HTTPS_PROXY=& node scripts/import-footprints.mjs\")",
+      "Bash(NO_PROXY=\"*\" http_proxy=\"\" HTTP_PROXY=\"\" https_proxy=\"\" HTTPS_PROXY=\"\" node scripts/import-footprints.mjs)"
     ]
   }
 }

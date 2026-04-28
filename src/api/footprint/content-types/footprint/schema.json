@@ -16,13 +16,17 @@
       "type": "string",
       "required": true
     },
+    "coordinates": {
+      "type": "string",
+      "required": false
+    },
     "latitude": {
       "type": "decimal",
-      "required": true
+      "required": false
     },
     "longitude": {
       "type": "decimal",
-      "required": true
+      "required": false
     },
     "city": {
       "type": "string"
@@ -40,7 +44,9 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "photos": {
       "type": "relation",

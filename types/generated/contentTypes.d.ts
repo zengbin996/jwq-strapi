@@ -488,16 +488,17 @@ export interface ApiFootprintFootprint extends Struct.CollectionTypeSchema {
   };
   attributes: {
     city: Schema.Attribute.String;
+    coordinates: Schema.Attribute.String;
     country: Schema.Attribute.String;
     cover: Schema.Attribute.Media<'images'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private;
     description: Schema.Attribute.Text;
-    latitude: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    latitude: Schema.Attribute.Decimal;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::footprint.footprint'> &
       Schema.Attribute.Private;
-    longitude: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    longitude: Schema.Attribute.Decimal;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     photos: Schema.Attribute.Relation<'oneToMany', 'api::photo.photo'>;
     publishedAt: Schema.Attribute.DateTime;
