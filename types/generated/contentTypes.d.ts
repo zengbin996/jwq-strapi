@@ -475,6 +475,40 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiFeaturedPhotoFeaturedPhoto extends Struct.CollectionTypeSchema {
+  collectionName: 'featured_photos';
+  info: {
+    description: 'Featured photos for homepage display';
+    displayName: 'Featured Photo';
+    pluralName: 'featured-photos';
+    singularName: 'featured-photo';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::featured-photo.featured-photo'> &
+      Schema.Attribute.Private;
+    priority: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<0>;
+    publishedAt: Schema.Attribute.DateTime;
+    source_photo: Schema.Attribute.Relation<'manyToOne', 'api::photo.photo'>;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFootprintFootprint extends Struct.CollectionTypeSchema {
   collectionName: 'footprints';
   info: {
@@ -524,7 +558,6 @@ export interface ApiPhotoPhoto extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private;
     description: Schema.Attribute.Text;
-    featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     footprint: Schema.Attribute.Relation<'manyToOne', 'api::footprint.footprint'>;
     image: Schema.Attribute.Media<'images', true> & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -971,6 +1004,7 @@ declare module '@strapi/strapi' {
       'api::article-category.article-category': ApiArticleCategoryArticleCategory;
       'api::article.article': ApiArticleArticle;
       'api::category.category': ApiCategoryCategory;
+      'api::featured-photo.featured-photo': ApiFeaturedPhotoFeaturedPhoto;
       'api::footprint.footprint': ApiFootprintFootprint;
       'api::photo.photo': ApiPhotoPhoto;
       'plugin::content-releases.release': PluginContentReleasesRelease;

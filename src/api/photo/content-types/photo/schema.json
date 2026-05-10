@@ -29,10 +29,6 @@
     "description": {
       "type": "text"
     },
-    "featured": {
-      "type": "boolean",
-      "default": false
-    },
     "order": {
       "type": "integer",
       "default": 0

@@ -3,10 +3,34 @@
     "allow": [
       "Bash(yarn install:*)",
       "Bash(ls c:/Users/Nick/Desktop/WWW/MYSELF/jwq-strapi/*.zip)",
-      "Bash(git -C c:/Users/Nick/Desktop/WWW/MYSELF/jwq-strapi log --oneline --all -- \"*.zip\")"
+      "Bash(git -C c:/Users/Nick/Desktop/WWW/MYSELF/jwq-strapi log --oneline --all -- \"*.zip\")",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\hello\\\\Desktop\\\\WWW\\\\jwq-strapi\\\\src\\\\api\" -Directory)",
+      "Bash(Select-Object Name)",
+      "Bash(npm install *)",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\hello\\\\Desktop\\\\WWW\\\\jwq-strapi\" -File | Where-Object {$_.Name -eq 'README.md' -or $_.Name -eq 'README.txt'} | Select-Object -ExpandProperty FullName)",
+      "Skill(update-config)",
+      "Skill(update-config:*)",
+      "Bash(Remove-Item \"c:\\\\Users\\\\hello\\\\Desktop\\\\WWW\\\\jwq-strapi\\\\src\\\\api\\\\article\\\\content-types\\\\article\\\\lifecycles.ts\" -ErrorAction SilentlyContinue)",
+      "Bash(Remove-Item \"c:\\\\Users\\\\hello\\\\Desktop\\\\WWW\\\\jwq-strapi\\\\src\\\\api\\\\photo\\\\content-types\\\\photo\\\\lifecycles.ts\" -ErrorAction SilentlyContinue)",
+      "Bash(Remove-Item \"c:\\\\Users\\\\hello\\\\Desktop\\\\WWW\\\\jwq-strapi\\\\src\\\\api\\\\article-category\\\\content-types\\\\article-category\\\\lifecycles.ts\" -ErrorAction SilentlyContinue)",
+      "Bash(Write-Host \"Done\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\Nick\\Desktop\\WWW\\MYSELF\\jwq-strapi"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "Input: $ARGUMENTS\n\nCheck tool_input.file_path. If the path contains any of: schema.json, package.json, config/, src/api/ — output this JSON exactly:\n{\"hookSpecificOutput\":{\"hookEventName\":\"PostToolUse\",\"additionalContext\":\"REMINDER: A schema, config, or content-type file was just changed. Check whether CLAUDE.md or AGENTS.md need updating (new fields, new content type, dependency change, config change).\"}}\n\nOtherwise output nothing.",
+            "statusMessage": "检查是否需要更新文档..."
+          }
+        ]
+      }
     ]
   }
 }
